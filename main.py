@@ -3,8 +3,10 @@ from enum import Enum
 import pickle
 from Inputs import inputs
 from fastapi.middleware.cors import CORSMiddleware
-app = FastAPI()
+from mangum import Mangum
 
+app = FastAPI()
+handler = Mangum(app)
 origins = [
     'http://localhost:3001',
     'http://localhost:3000'
